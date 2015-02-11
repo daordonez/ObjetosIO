@@ -9,12 +9,15 @@ package objetosio;
  *
  * @author diegordonez
  */
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+
 public class ObjetosIO {
 
     
     public static void main(String[] args) {
         
+        Scanner teclado = new Scanner(System.in);
         
 //        Alumno al1 ;
 //        al1 = llenarAlumno();
@@ -30,12 +33,18 @@ public class ObjetosIO {
 //        
 //        leeCarnet(carnet1);
         
-        Carnet clase1[] = new Carnet[3];
+        System.out.print("Introduzca nombre del archivo que se va a generar:");
+        String ruta = creadorTXT(teclado.next());
+        System.out.print("Introduzca cantidad de carnets que desea generar:");
+        int cantCar = teclado.nextInt();
         
-        
-        llenaClase(clase1);
+        Carnet clase1[] = new Carnet[cantCar];
+        llenaClase(clase1, ruta);
         leeClase(clase1);
         
+        
+        
+       
     }
     
     static  Alumno llenarAlumno(){
@@ -134,13 +143,37 @@ public class ObjetosIO {
         System.out.println("2do Apellido: "+cr.datosPerso.nombreCompleto.ape2);
         System.out.println("Fecha Nacimiento: "+cr.fechaNac.dia+"/"+cr.fechaNac.mes+"/"+cr.fechaNac.anio);
         System.out.println("Fecha Solicitud: "+cr.fechaSoli.dia+"/"+cr.fechaSoli.mes+"/"+cr.fechaSoli.anio);
-        System.out.println("Hora Solicitud: "+cr.horaSol);
+        System.out.println("Hora Solicitud: "+cr.horaSol);        
     }
     
-    static void llenaClase(Carnet cl[]){
+    static  void escribeCarnet(Carnet cr, String path){
+        
+        Date fecHora = new Date();
+        String fecha = "Fecha Inserción: ".concat(fecHora.toString());
+        String nombre = "Nombre: ".concat(cr.datosPerso.nombreCompleto.nombre);
+        String ape1 = "Apellido 1: ".concat(cr.datosPerso.nombreCompleto.ape1);
+        String ape2 = "Apellido 2: ".concat(cr.datosPerso.nombreCompleto.ape2);
+        String fecnac = "Fecha Nacimiento: ".concat(cr.fechaNac.dia+"/"+cr.fechaNac.mes+"/"+cr.fechaNac.anio);
+        String fecSol = "Fecha Solicitud: ".concat(cr.fechaSoli.dia+"/"+cr.fechaSoli.mes+"/"+cr.fechaSoli.anio);
+        String horaSol = "Hola Solicitud: ".concat(cr.horaSol);
+        
+        escribir("**************", path);
+        escribir(fecha, path);
+        escribir("**************", path);
+        escribir(nombre, path);
+        escribir(ape1, path);
+        escribir(ape2, path);
+        escribir(fecnac, path);
+        escribir(fecSol, path);
+        escribir(horaSol, path);
+    }
+    
+    static void llenaClase(Carnet cl[], String path){
         for (int i = 0; i < cl.length; i++) {
             cl[i] = new Carnet();
             llenaCarnet(cl[i]);
+            escribeCarnet(cl[i], path);
+            System.out.println("*********");
         }
     }
     static void leeClase(Carnet cl[]){
@@ -148,4 +181,34 @@ public class ObjetosIO {
             leeCarnet(car);
         }
     }
+    
+    static String creadorTXT(String dirArch){
+        
+        String rutaAbs = "/Users/diegordonez/Desktop/".concat(dirArch+".txt");
+        
+        File archivo = new File(rutaAbs);
+        
+        try {
+            if (archivo.createNewFile()) {
+                System.out.println("Archivo creado exitosamente!!");
+                
+            }
+        } catch (IOException e) {
+            System.err.println("Imposible crear archivo erorr: "+e);
+        }
+        
+        return rutaAbs;
+    }
+    
+    static void escribir(String cad, String pathString){
+        
+        try {
+            try (FileWriter esc = new FileWriter(pathString,true)) {
+                esc.append(cad+"\n");
+            }
+        } catch (Exception e) {
+            System.err.println("No ha sido posible escribir en el fichero");
+        }
+    }
+   
 }
