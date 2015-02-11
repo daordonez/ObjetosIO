@@ -27,6 +27,8 @@ public class ObjetosIO {
         Carnet carnet1 = new Carnet();
         
         llenaCarnet(carnet1);
+        
+        leeCarnet(carnet1);
     }
     
     static  Alumno llenarAlumno(){
@@ -85,18 +87,19 @@ public class ObjetosIO {
         cr.datosPerso.nombreCompleto.ape2 = teclado.next();
         //Fechas
         //Fecha nacimiento
-        System.out.println("Fecha de nacimiento: ");
+        System.out.println("Fecha de nacimiento:");
         int fechNac[] = llenaFech();
         cr.fechaNac.dia = fechNac[0];
         cr.fechaNac.mes = fechNac[1];
         cr.fechaNac.anio = fechNac[2];
         //Fecha solicitud
+        System.out.println("Fecha de solicitud:");
         int fechSol[] = llenaFech();
         cr.fechaSoli.dia = fechSol[0];
         cr.fechaSoli.mes = fechSol[1];
         cr.fechaSoli.anio = fechSol[2];
         
-        System.out.println("Introduzca hora(Separado por '/'):");
+        System.out.print("Introduzca hora separado por ':' :");
         cr.horaSol = teclado.next();
         
     
@@ -107,15 +110,23 @@ public class ObjetosIO {
         Scanner teclado = new Scanner(System.in);
         int fecha[] = new int[3];
         
-        System.out.println("\t");
-        System.out.print("Introduzca (DIA):");
+        System.out.print("\t Introduzca (DIA):");
         fecha[0] = teclado.nextInt();
-        System.out.print("Introduzca (MES):");
+        System.out.print("\t Introduzca (MES):");
         fecha[1] =teclado.nextInt();
-        System.out.print("Introduzca (AÑO):");
+        System.out.print("\t Introduzca (AÑO):");
         fecha[2] = teclado.nextInt();
         
         return fecha;
     }
     
+    static  void leeCarnet(Carnet cr){
+        System.out.println("*********");
+        System.out.println("Nombre:"+cr.datosPerso.nombreCompleto.nombre);
+        System.out.println("1er Apellido: "+cr.datosPerso.nombreCompleto.ape1);
+        System.out.println("2do Apellido: "+cr.datosPerso.nombreCompleto.ape2);
+        System.out.println("Fecha Nacimiento: "+cr.fechaNac.dia+"/"+cr.fechaNac.mes+"/"+cr.fechaNac.anio);
+        System.out.println("Fecha Solicitud: "+cr.fechaSoli.dia+"/"+cr.fechaSoli.mes+"/"+cr.fechaSoli.anio);
+        System.out.println("Hora Solicitud: "+cr.horaSol);
+    }
 }
