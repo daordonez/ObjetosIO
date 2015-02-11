@@ -11,9 +11,9 @@ package objetosio;
  */
 public class NombreComp {
     
-    private String nombre;
-    private String ape1;
-    private String ape2;
+    public String nombre;
+    public String ape1;
+    public String ape2;
     
     //constructor por defecto
     public NombreComp(){

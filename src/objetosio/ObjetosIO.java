@@ -16,15 +16,17 @@ public class ObjetosIO {
     public static void main(String[] args) {
         
         
-        Alumno al1 ;
+//        Alumno al1 ;
+//        al1 = llenarAlumno();
+//        leeAlumno(al1);
+//        Cds cd1 ;
+//        cd1 = llenaCd();
         
-        al1 = llenarAlumno();
+        //Clase Carnet, nuevo carnet
         
-        leeAlumno(al1);
+        Carnet carnet1 = new Carnet();
         
-        Cds cd1 ;
-        
-        cd1 = llenaCd();
+        llenaCarnet(carnet1);
     }
     
     static  Alumno llenarAlumno(){
@@ -69,6 +71,51 @@ public class ObjetosIO {
         System.out.println("Introduce número de pistas:");
         cdFunc.setNumPistas(teclado.nextInt());
         return cdFunc;
+    }
+    
+    static void llenaCarnet(Carnet cr){
+        
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.print("Introduzca Nombre:");
+        cr.datosPerso.nombreCompleto.nombre = teclado.next();
+        System.out.print("Introduzca Apellido 1:");
+        cr.datosPerso.nombreCompleto.ape1 = teclado.next();
+        System.out.print("Introduzca Apellido 2:");
+        cr.datosPerso.nombreCompleto.ape2 = teclado.next();
+        //Fechas
+        //Fecha nacimiento
+        System.out.println("Fecha de nacimiento: ");
+        int fechNac[] = llenaFech();
+        cr.fechaNac.dia = fechNac[0];
+        cr.fechaNac.mes = fechNac[1];
+        cr.fechaNac.anio = fechNac[2];
+        //Fecha solicitud
+        int fechSol[] = llenaFech();
+        cr.fechaSoli.dia = fechSol[0];
+        cr.fechaSoli.mes = fechSol[1];
+        cr.fechaSoli.anio = fechSol[2];
+        
+        System.out.println("Introduzca hora(Separado por '/'):");
+        cr.horaSol = teclado.next();
+        
+    
+    }
+    
+    static int[] llenaFech(){
+        
+        Scanner teclado = new Scanner(System.in);
+        int fecha[] = new int[3];
+        
+        System.out.println("\t");
+        System.out.print("Introduzca (DIA):");
+        fecha[0] = teclado.nextInt();
+        System.out.print("Introduzca (MES):");
+        fecha[1] =teclado.nextInt();
+        System.out.print("Introduzca (AÑO):");
+        fecha[2] = teclado.nextInt();
+        
+        return fecha;
     }
     
 }

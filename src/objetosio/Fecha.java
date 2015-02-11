@@ -11,9 +11,9 @@ package objetosio;
  */
 public class Fecha {
     
-    private int dia;
-    private int mes;
-    private int anio;
+    public int dia;
+    public int mes;
+    public int anio;
     
     //Constructor por defecto
     public Fecha(){

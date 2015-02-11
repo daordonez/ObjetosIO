@@ -11,10 +11,10 @@ package objetosio;
  */
 public class Domicilio {
     
-    private String nombreC;
-    private int num;
-    private String poblacion;
-    private int cp;
+    public String nombreC;
+    public int num;
+    public String poblacion;
+    public int cp;
     
     //Constructor por defecto
     

@@ -10,7 +10,17 @@ package objetosio;
  * @author diegordonez
  */
 public class Carnet {
-    
-   
-    
+
+    public DatosPer datosPerso;
+    public Fecha fechaNac;
+    public Fecha fechaSoli;
+    public String horaSol;
+
+    public Carnet() {
+        this.datosPerso = new DatosPer();
+        this.fechaNac = new Fecha();
+        this.fechaSoli = new Fecha();
+        this.horaSol = null;
+    }
+
 }

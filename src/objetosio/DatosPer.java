@@ -11,8 +11,8 @@ package objetosio;
  */
 public class DatosPer {
     
-    private NombreComp  nombreCompleto;
-    private Domicilio domicilioPer;
+    public NombreComp  nombreCompleto;
+    public Domicilio domicilioPer;
     
     //Constructor por defecto
     public DatosPer(){
