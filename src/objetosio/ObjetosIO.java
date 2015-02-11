@@ -24,11 +24,18 @@ public class ObjetosIO {
         
         //Clase Carnet, nuevo carnet
         
-        Carnet carnet1 = new Carnet();
+//        Carnet carnet1 = new Carnet();
+//        
+//        llenaCarnet(carnet1);
+//        
+//        leeCarnet(carnet1);
         
-        llenaCarnet(carnet1);
+        Carnet clase1[] = new Carnet[3];
         
-        leeCarnet(carnet1);
+        
+        llenaClase(clase1);
+        leeClase(clase1);
+        
     }
     
     static  Alumno llenarAlumno(){
@@ -128,5 +135,17 @@ public class ObjetosIO {
         System.out.println("Fecha Nacimiento: "+cr.fechaNac.dia+"/"+cr.fechaNac.mes+"/"+cr.fechaNac.anio);
         System.out.println("Fecha Solicitud: "+cr.fechaSoli.dia+"/"+cr.fechaSoli.mes+"/"+cr.fechaSoli.anio);
         System.out.println("Hora Solicitud: "+cr.horaSol);
+    }
+    
+    static void llenaClase(Carnet cl[]){
+        for (int i = 0; i < cl.length; i++) {
+            cl[i] = new Carnet();
+            llenaCarnet(cl[i]);
+        }
+    }
+    static void leeClase(Carnet cl[]){
+        for(Carnet car:cl){
+            leeCarnet(car);
+        }
     }
 }
