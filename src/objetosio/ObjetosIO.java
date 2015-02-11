@@ -16,9 +16,11 @@ public class ObjetosIO {
     public static void main(String[] args) {
         
         
-//        Alumno al1 ;
-//        
-//        al1 = llenarAlumno();
+        Alumno al1 ;
+        
+        al1 = llenarAlumno();
+        
+        leeAlumno(al1);
         
         Cds cd1 ;
         
