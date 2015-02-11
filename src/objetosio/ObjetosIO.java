@@ -170,10 +170,12 @@ public class ObjetosIO {
     
     static void llenaClase(Carnet cl[], String path){
         for (int i = 0; i < cl.length; i++) {
+            System.out.println("*********");
+            System.out.println("Carnet num:"+i);
+            System.out.println("*********");
             cl[i] = new Carnet();
             llenaCarnet(cl[i]);
             escribeCarnet(cl[i], path);
-            System.out.println("*********");
         }
     }
     static void leeClase(Carnet cl[]){
