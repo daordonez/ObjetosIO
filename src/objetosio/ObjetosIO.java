@@ -9,6 +9,7 @@ package objetosio;
  *
  * @author diegordonez
  */
+
 import java.util.*;
 import java.io.*;
 
@@ -115,8 +116,8 @@ public class ObjetosIO {
         cr.fechaSoli.mes = fechSol[1];
         cr.fechaSoli.anio = fechSol[2];
         
-        System.out.print("Introduzca hora separado por ':' :");
-        cr.horaSol = teclado.next();
+//        System.out.print("Introduzca hora separado por ':' :");
+//        cr.horaSol = teclado.next();
         
     
     }
@@ -149,13 +150,13 @@ public class ObjetosIO {
     static  void escribeCarnet(Carnet cr, String path){
         
         Date fecHora = new Date();
-        String fecha = "Fecha Inserción: ".concat(fecHora.toString());
+        String fecha = fecHora.toString();
         String nombre = "Nombre: ".concat(cr.datosPerso.nombreCompleto.nombre);
         String ape1 = "Apellido 1: ".concat(cr.datosPerso.nombreCompleto.ape1);
         String ape2 = "Apellido 2: ".concat(cr.datosPerso.nombreCompleto.ape2);
         String fecnac = "Fecha Nacimiento: ".concat(cr.fechaNac.dia+"/"+cr.fechaNac.mes+"/"+cr.fechaNac.anio);
         String fecSol = "Fecha Solicitud: ".concat(cr.fechaSoli.dia+"/"+cr.fechaSoli.mes+"/"+cr.fechaSoli.anio);
-        String horaSol = "Hola Solicitud: ".concat(cr.horaSol);
+        String horaSol = "Fecha Solicitud: "+fecha;
         
         escribir("**************", path);
         escribir(fecha, path);
@@ -205,8 +206,9 @@ public class ObjetosIO {
     static void escribir(String cad, String pathString){
         
         try {
-            try (FileWriter esc = new FileWriter(pathString,true)) {
-                esc.append(cad+"\n");
+            try (FileWriter esc = new FileWriter(pathString,true); BufferedWriter bufW = new BufferedWriter(esc)) {
+                bufW.write(cad);
+                bufW.newLine();
             }
         } catch (Exception e) {
             System.err.println("No ha sido posible escribir en el fichero");
